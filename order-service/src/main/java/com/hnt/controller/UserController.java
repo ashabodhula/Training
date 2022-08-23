@@ -46,7 +46,7 @@ public class UserController {
 	}
 	
 	@PostMapping
-	void saveUser1(@RequestBody User user) {
+	void saveUser1(@Valid @RequestBody User user) {
 		userService.save(user);
 		//Log.debug(user.getNmae());
 		
