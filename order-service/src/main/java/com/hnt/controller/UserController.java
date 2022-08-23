@@ -23,13 +23,13 @@ public class UserController {
 	@GetMapping
 	
 	String getUser() {
-		System.out.println("test");
+		//System.out.println("test");
 		return "test";
 	}
 
 	@PostMapping
 	void saveUser(@RequestBody User user) {
-		//Log.debug(user.getName());
+		
 		//Log.debug(user.getName());
 		System.out.println();
 		userService.save(user);
