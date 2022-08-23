@@ -15,6 +15,11 @@ UserRepository repository;
 		repository.save(user);
 		
 	}
+	public Iterable<User> getUser() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
+	
 
 	
 
