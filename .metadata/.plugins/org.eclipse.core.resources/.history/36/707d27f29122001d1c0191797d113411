@@ -1,9 +1,0 @@
-package com.hnt.service;
-
-public class UserService {
-
-	@Service
-	
-	
-	
-}
