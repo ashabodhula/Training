@@ -8,20 +8,18 @@ import com.hnt.entity.User;
 
 @Service
 public class UserService {
-@Autowired
-UserRepository repository;
+	@Autowired
+	UserRepository repository;
+
 	public void save(User user) {
 		// TODO Auto-generated method stub
 		repository.save(user);
-		
+
 	}
+
 	public Iterable<User> getUser() {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
-	
 
-	
-
-	
 }
