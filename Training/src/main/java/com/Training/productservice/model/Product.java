@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 
 import lombok.Builder;
 
-
-@Builder
+@Entity
+//@Builder
 public class Product {
 
 	private String title;

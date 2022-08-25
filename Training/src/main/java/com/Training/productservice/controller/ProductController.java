@@ -17,5 +17,7 @@ public class ProductController {
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public void createProduct(@RequestBody ProductRequest productRequest){
 		
+		
+		
 	}
 }

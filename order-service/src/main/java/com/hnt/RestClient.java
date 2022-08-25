@@ -20,8 +20,8 @@ public class RestClient {
 
 	private static void post() {
 		User user = new User();
-		user.setAge(23); //
-		user.setName("Shivani");
+		user.setAge(25); //
+		user.setName("asha");
 		RestTemplate restTemplate = new RestTemplate();
 		Object response = restTemplate.postForObject(URL, user, Integer.class, new HashMap());
 		System.out.println(response);

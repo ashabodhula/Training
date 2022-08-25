@@ -1,5 +1,9 @@
 package com.Training.productservice.repository;
 
-public interface ProductRepository {
+import org.springframework.data.repository.CrudRepository;
+import com.Training.productservice.model.*;
+
+
+public interface ProductRepository extends CrudRepository<Product, Integer>  {
 
 }

@@ -11,13 +11,13 @@ public class UserService {
 	@Autowired
 	UserRepository repository;
 
-	public void save(User user) {
+	public User save(User user) {
 		// TODO Auto-generated method stub
 		if (user.getName().equals("Ram"))
 			throw new IllegalArgumentException("message");
 		else
 			repository.save(user);
-
+return user;
 	}
 
 	public Iterable<User> getUser() {
@@ -25,4 +25,5 @@ public class UserService {
 		return repository.findAll();
 	}
 
+	
 }

@@ -30,38 +30,34 @@ import lombok.extern.slf4j.Slf4j;
 @RestController // to spring beans
 @RequestMapping("/user")
 public class UserController {
-	@Autowired
-
-	UserService userService;
+	@Autowired // DI
+	UserService userService; 
 
 	@GetMapping
 	Iterable<User> getUser() {
 		return userService.getUser();
 	}
 
-	@PostMapping("age/{age}") // it is basepath
+	@PostMapping("/age/{age}/height/{height}") // base path
 	@ResponseStatus(code = HttpStatus.CREATED)
-	ResponseEntity saveUser(@Valid @RequestBody User user, @PathVariable("age") int age) {
+	ResponseEntity saveUser(@Valid @RequestBody User user, @PathVariable("age") int age, @PathVariable("height") float height) {
 		userService.save(user);
-
+		System.out.println(height);
 		System.out.println(age);
-
-		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-
-		headers.add("headerfrom server", "Success");
-		ResponseEntity responseEntity = new ResponseEntity<>(headers, HttpStatus.CREATED);
+		
+		MultiValueMap headers = new LinkedMultiValueMap<String, String>();
+		headers.add("headerfromserver", "success");
+		ResponseEntity responseEntity = new ResponseEntity(headers , HttpStatus.CREATED);
 		return responseEntity;
 	}
 
 	@PostMapping
-	void saveUser1(@Valid @RequestBody User user) {
-		userService.save(user);
-		// Log.debug(user.getNmae());
-
+	Integer saveUser1(@Valid @RequestBody User user) {
+		userService.save(user);  
 		System.out.println("second");
-
+		return user.getId();
 	}
-
+	/*
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	Map<String, String> handleException(MethodArgumentNotValidException ex) {
 		Map<String, String> errors = new HashMap();
@@ -71,6 +67,6 @@ public class UserController {
 			errors.put(fieldName, message);
 		});
 		return errors;
-	}
+	}*/
 
 }
