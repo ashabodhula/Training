@@ -13,7 +13,10 @@ public class UserService {
 
 	public void save(User user) {
 		// TODO Auto-generated method stub
-		repository.save(user);
+		if (user.getName().equals("Ram"))
+			throw new IllegalArgumentException("message");
+		else
+			repository.save(user);
 
 	}
 
