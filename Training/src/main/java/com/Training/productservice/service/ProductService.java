@@ -14,7 +14,8 @@ import com.Training.productservice.repository.ProductRepository;
 public class ProductService {	
 	@Autowired
 	ProductRepository productRepository;
-	public void createProduct(ProductRequest productRequest) {
+	public void createProduct(Product product) {
+		productRepository.save(product);
 		
 		//productRepository.save(productRequest);
 		
