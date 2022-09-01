@@ -1,6 +1,17 @@
+
+
 <div>
-    <input [(ngModel)]='user.name'> 
+  <input [(ngModel)]='user.name'> 
     <input [(ngModel)]='user.age'>
-    <input [(ngModel)]='user.address'>
+    <input [(ngModel)]='user.address'/>{{user.address}}
     <button (click)='saveUser()'>Save</button>
+
+     <ol>
+     <li *ngFor="let user of users">
+        
+        {{user.name}},{{user.age}}
+     </li>
+</ol>
+<app-userlist></app-userlist>
+
 </div>

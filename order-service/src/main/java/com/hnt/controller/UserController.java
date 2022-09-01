@@ -40,7 +40,7 @@ public class UserController {
 		return userService.getUser();
 	}
 
-	@PostMapping("/age/{age}/height/{height}") // base path
+	@PostMapping("/age/{age}/height/{height}") 
 	@ResponseStatus(code = HttpStatus.CREATED)
 	ResponseEntity saveUser(@Valid @RequestBody User user, @PathVariable("age") int age, @PathVariable("height") float height) {
 		userService.save(user);
@@ -49,15 +49,15 @@ public class UserController {
 		
 		MultiValueMap headers = new LinkedMultiValueMap<String, String>();
 		headers.add("headerfromserver", "success");
-		ResponseEntity responseEntity = new ResponseEntity(headers , HttpStatus.CREATED);
+		ResponseEntity responseEntity = new ResponseEntity( user,headers , HttpStatus.CREATED);
 		return responseEntity;
 	}
 
 	@PostMapping
-	Integer saveUser1(@Valid @RequestBody User user) {
+    User saveUser1(@Valid @RequestBody User user) {
 		userService.save(user);  
 		System.out.println("second");
-		return user.getId();
+		return user;
 	}
 	/*
 	@ExceptionHandler(MethodArgumentNotValidException.class)

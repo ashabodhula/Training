@@ -10,16 +10,24 @@ export class UserformComponent implements OnInit {
   user = {
     name: 'asha',
     age: 10,
-    address:'india'
+    address: 'india'
   }
+  users: any[] = [];
+
   constructor(public userService: UserService) { }
 
-  saveUser(){
+  saveUser() {
     console.log('clicked');
     const promise = this.userService.save(this.user);
-    promise.subscribe((response:any)=>{
-      console.log('response'+response)
-    });
+    promise.subscribe((responseBody: any) => {
+      console.log(responseBody);
+      this.users.push(responseBody);
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+
   }
   ngOnInit(): void {
   }
