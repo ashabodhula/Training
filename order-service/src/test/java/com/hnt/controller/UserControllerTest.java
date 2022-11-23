@@ -18,8 +18,8 @@ class UserControllerTest {
 	UserService service;
 	@InjectMocks
 	UserController controller;
-/*
- * @Test
+
+	@Test
 	void testSaveUser1() {
 		User user = new User();
 		user.setId(1);
@@ -27,9 +27,6 @@ class UserControllerTest {
 		Integer savedUserId = controller.saveUser1(user);
 		assertEquals(1, savedUserId);
 	}
-	
- */
-
 	
 	
 

@@ -8,18 +8,28 @@ import { UserService } from '../user.service';
 })
 export class UserformComponent implements OnInit {
   user = {
-    name: 'asha',
+    name: 'Asha',
     age: 10,
-    address: 'india'
+    dob: new Date()
   }
   users: any[] = [];
-
   constructor(public userService: UserService) { }
 
+  deleteUser(id:number){
+    const observable = this.userService.deleteUser(id);
+    observable.subscribe((responseBody: any) => {
+      console.log(responseBody);
+      
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
   saveUser() {
-    console.log('clicked');
-    const promise = this.userService.save(this.user);
-    promise.subscribe((responseBody: any) => {
+    this.user.dob = new Date(this.user.dob);
+    const observable = this.userService.save(this.user);
+    observable.subscribe((responseBody: any) => {//success handler
       console.log(responseBody);
       this.users.push(responseBody);
     },
@@ -27,9 +37,12 @@ export class UserformComponent implements OnInit {
         console.log(error);
       }
     );
-
   }
   ngOnInit(): void {
+    const observable = this.userService.getUsers();
+    observable.subscribe((usersFromServer:any)=>{
+      this.users=usersFromServer;
+    })
   }
 
 }

@@ -1,17 +1,14 @@
-
-
 <div>
-  <input [(ngModel)]='user.name'> 
+    <input [(ngModel)]='user.name'>
     <input [(ngModel)]='user.age'>
-    <input [(ngModel)]='user.address'/>{{user.address}}
-    <button (click)='saveUser()'>Save</button>
+   
+    <input type="date" placeholder="dob" [(ngModel)]='user.dob'>
+    <button (click)='saveUser()'class ='btn btn-success'>Save</button>
+    <ol >
+        <li *ngFor="let user of users">
+            {{user.name}}, {{user.age}}, {{user.dob| date }} <button class='btn btn-warning' (click)='deleteUser(user.id)'>Delete</button>
+        </li>
+    </ol>
 
-     <ol>
-     <li *ngFor="let user of users">
-        
-        {{user.name}},{{user.age}}
-     </li>
-</ol>
-<app-userlist></app-userlist>
 
 </div>
